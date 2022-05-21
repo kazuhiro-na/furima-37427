@@ -1,24 +1,62 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column         | Type   | Options     |
+| ---------------| ------ | ----------- |
+| nickname       | string | null, false |
+| email          | string | null, false |
+| password       | string | null, false |
+| name(fullname) | string | null, false |
+| name(Kana)     | string | null, false |
+| birthday       | string | null, false |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :items
+- has_many :purchase_records
 
-* System dependencies
+## itemsテーブル
 
-* Configuration
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| image         | image      | null, false                    |
+| name          | string     | null, false                    |
+| explanation   | text       | null, false                    |
+| category      | string     | null, false                    |
+| condition     | string     | null, false                    |
+| burden        | string     | null, false                    |
+| area          | string     | null, false                    |
+| shipping_days | string     | null, false                    |
+| price         | string     | null, false                    |
+| user          | references | null, false, foreign_key: true |
 
-* Database creation
+### Association
 
-* Database initialization
+- belongs_to :user
+- has_one :purchase_records
 
-* How to run the test suite
+## purchase_recordsテーブル
+| Column | Type       | Options                        |
+| ----   | ---------- | ------------------------------ |
+| user   | references | null, false, foreign_key: true |
+| item   | references | null, false, foreign_key: true | 
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to :user
+- belongs_to :item
+- has_one :purchase_records
 
-* ...
+## shipping_addressesテーブル
+| Column          | Type       | Options                       |
+| --------------- | ---------- | ----------------------------- |
+| postal_code     | string     | null, false                   |
+| prefectures     | string     | null, false                   |
+| municipalities  | string     | null, false                   |
+| address         | string     | null, false                   |
+| building        | string     |                               |
+| tell            | string     | null, false                   |
+| purchase_record | references | null, false, foreign_key: true|
+
+### Association
+
+- belongs_to :purchase_records
