@@ -1,15 +1,15 @@
 ## usersテーブル
 
-| Column             | Type   | Options     |
-| -------------------| ------ | ----------- |
-| nickname           | string | null, false |
-| email              | string | null, false |
-| encrypted_password | string | null, false |
-| name_sei           | string | null, false |
-| name_mei           | string | null, false |
-| name_sei_kana      | string | null, false |
-| name_mei_kana      | string | null, false |
-| birthday           | date   | null, false |
+| Column             | Type   | Options                   |
+| -------------------| ------ | ------------------------- |
+| nickname           | string | null, false               |
+| email              | string | null, false, unique: true |
+| encrypted_password | string | null, false               |
+| name_sei           | string | null, false               |
+| name_mei           | string | null, false               |
+| name_sei_kana      | string | null, false               |
+| name_mei_kana      | string | null, false               |
+| birthday           | date   | null, false               |
 
 ### Association
 
@@ -25,8 +25,8 @@
 | category_id      | integer    | null, false                    |
 | condition_id     | integer    | null, false                    |
 | burden_id        | integer    | null, false                    |
-| prefectures_id   | integer    | null, false                    |
-| shipping_days_id | integer    | null, false                    |
+| prefecture_id   | integer    | null, false                    |
+| shipping_day_id | integer    | null, false                    |
 | price            | integer    | null, false                    |
 | user             | references | null, false, foreign_key: true |
 
@@ -51,7 +51,7 @@
 | Column          | Type       | Options                       |
 | --------------- | ---------- | ----------------------------- |
 | postal_code     | string     | null, false                   |
-| prefectures_id  | integer    | null, false                   |
+| prefecture_id  | integer    | null, false                   |
 | municipalities  | string     | null, false                   |
 | address         | string     | null, false                   |
 | building        | string     |                               |
