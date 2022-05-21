@@ -1,13 +1,15 @@
 ## usersテーブル
 
-| Column         | Type   | Options     |
-| ---------------| ------ | ----------- |
-| nickname       | string | null, false |
-| email          | string | null, false |
-| password       | string | null, false |
-| name(fullname) | string | null, false |
-| name(Kana)     | string | null, false |
-| birthday       | string | null, false |
+| Column             | Type   | Options     |
+| -------------------| ------ | ----------- |
+| nickname           | string | null, false |
+| email              | string | null, false |
+| encrypted_password | string | null, false |
+| name_sei           | string | null, false |
+| name_mei           | string | null, false |
+| name_sei_kana      | string | null, false |
+| name_mei_kana      | string | null, false |
+| birthday           | date   | null, false |
 
 ### Association
 
@@ -16,23 +18,22 @@
 
 ## itemsテーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| image         | image      | null, false                    |
-| name          | string     | null, false                    |
-| explanation   | text       | null, false                    |
-| category      | string     | null, false                    |
-| condition     | string     | null, false                    |
-| burden        | string     | null, false                    |
-| area          | string     | null, false                    |
-| shipping_days | string     | null, false                    |
-| price         | string     | null, false                    |
-| user          | references | null, false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null, false                    |
+| explanation      | text       | null, false                    |
+| category_id      | integer    | null, false                    |
+| condition_id     | integer    | null, false                    |
+| burden_id        | integer    | null, false                    |
+| prefectures_id   | integer    | null, false                    |
+| shipping_days_id | integer    | null, false                    |
+| price            | integer    | null, false                    |
+| user             | references | null, false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :purchase_records
+- has_one :purchase_record
 
 ## purchase_recordsテーブル
 | Column | Type       | Options                        |
@@ -44,13 +45,13 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :purchase_records
+- has_one :purchase_record
 
 ## shipping_addressesテーブル
 | Column          | Type       | Options                       |
 | --------------- | ---------- | ----------------------------- |
 | postal_code     | string     | null, false                   |
-| prefectures     | string     | null, false                   |
+| prefectures_id  | integer    | null, false                   |
 | municipalities  | string     | null, false                   |
 | address         | string     | null, false                   |
 | building        | string     |                               |
@@ -59,4 +60,4 @@
 
 ### Association
 
-- belongs_to :purchase_records
+- belongs_to :purchase_record
