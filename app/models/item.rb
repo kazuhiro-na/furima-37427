@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true
+  validates :image, presence: true
   validates :explantion, presence: true
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
