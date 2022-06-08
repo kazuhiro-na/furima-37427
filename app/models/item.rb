@@ -11,10 +11,10 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :image, presence: true
   validates :explanation, presence: true
-  validates :category_id, presence: true
-  validates :condition_id, presence: true
-  validates :burden_id, presence: true
-  validates :prefecture_id, presence: true
-  validates :shipping_day_id, presence: true
+  validates :category_id, numericality: { other_than: 0, message: "can't be blank" }
+  validates :condition_id, numericality: { other_than: 0, message: "can't be blank" }
+  validates :burden_id, numericality: { other_than: 0, message: "can't be blank" }
+  validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+  validates :shipping_day_id, numericality: { other_than: 0, message: "can't be blank" }
   validates :price, numericality: { only_integer: true }, inclusion: { in: 300..9_999_999, message: 'is out of setting range' }
 end
