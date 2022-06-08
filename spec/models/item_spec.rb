@@ -32,22 +32,22 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      it '商品の状態の情報が空では出品できない' do
+      it '商品の状態に「---」が選択されているときは出品できない' do
         @item.condition_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
-      it '配送料の負担の情報が空では出品できない' do
+      it '配送料の負担に「---」が選択されているときは出品できない' do
         @item.burden_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Burden can't be blank")
       end
-      it '発送元の地域の情報が空では出品できない' do
+      it '発送元の地域に「---」が選択されているときは出品できない' do
         @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it '発送までの日数の情報が空では出品できない' do
+      it '発送までの日数に「---」が選択されているときは出品できない' do
         @item.shipping_day_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
