@@ -7,7 +7,7 @@ FactoryBot.define do
     burden { Burden.all.sample }
     prefecture { Prefecture.all.sample }
     shipping_day { ShippingDay.all.sample }
-    price { Faker::Commerce.price(range:300..9_999_999,as_string:true)}
+    price { Faker::Commerce.price(range: 300..9_999_999, as_string: true) }
     association :user
 
     after(:build) do |item|
