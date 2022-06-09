@@ -7,7 +7,7 @@ FactoryBot.define do
     burden { Burden.find(1) }
     prefecture { Prefecture.find(1) }
     shipping_day { ShippingDay.find(1) }
-    price { Faker::Number.between(from: 300, to: 9999999) }
+    price { Faker::Number.between(from: 300, to: 9_999_999) }
     association :user
 
     after(:build) do |item|
