@@ -40,6 +40,7 @@
 | ----   | ---------- | ------------------------------ |
 | user   | references | null, false, foreign_key: true |
 | item   | references | null, false, foreign_key: true | 
+| tell   | string     | null, false                    |
 
 ### Association
 
@@ -55,7 +56,6 @@
 | municipalities  | string     | null, false                   |
 | address         | string     | null, false                   |
 | building        | string     |                               |
-| tell            | string     | null, false                   |
 | purchase_record | references | null, false, foreign_key: true|
 
 ### Association
