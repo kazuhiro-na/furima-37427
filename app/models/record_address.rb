@@ -1,6 +1,6 @@
 class RecordAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :tell, :postal_code, :prefecture_id, :municipalities, :address, :building
+  attr_accessor :user_id, :item_id, :tell, :postal_code, :prefecture_id, :municipalities, :address, :building, :token
 
   with_options presence: true do
     validates :tell, format: {with: /\A\d{10,11}\z/, message: "is invalid. Input only number"}

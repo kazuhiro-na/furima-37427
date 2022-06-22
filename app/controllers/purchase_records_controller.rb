@@ -7,7 +7,7 @@ class PurchaseRecordsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @record_address = RecordAddress.new(purchase_record_params)
+    @record_address = RecordAddress.new(record_address_params)
     if @record_address.valid?
       @record_address.save
       redirect_to root_path
@@ -18,8 +18,8 @@ class PurchaseRecordsController < ApplicationController
 
   private
   
-  def purchase_record_params
-    params.require(:record_address).permit(:tell, :postal_code, :prefecture_id, :municipalities, :address, :building).merge(user_id: current_user.id, item_id: params[:item_id])
+  def record_address_params
+    params.require(:record_address).permit(:tell, :postal_code, :prefecture_id, :municipalities, :address, :building).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
 end
