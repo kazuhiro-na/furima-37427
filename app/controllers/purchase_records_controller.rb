@@ -3,6 +3,9 @@ class PurchaseRecordsController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @record_address = RecordAddress.new
+    if @item.purchase_record.present? || @item.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def create
