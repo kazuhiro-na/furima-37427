@@ -4,7 +4,7 @@ RSpec.describe RecordAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
-    @record_address = FactoryBot.build(:record_address, user_id: user.id, item_id: item.id) 
+    @record_address = FactoryBot.build(:record_address, user_id: user.id, item_id: item.id)
   end
 
   describe '商品購入' do
@@ -26,17 +26,18 @@ RSpec.describe RecordAddress, type: :model do
       it '郵便局番号が空では購入できない' do
         @record_address.postal_code = ''
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@record_address.errors.full_messages).to include("Postal code can't be blank",
+                                                                'Postal code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it '郵便番号にハイフンなしでは購入できない' do
         @record_address.postal_code = '1234567'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Postal code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@record_address.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it '郵便番号が全角数字では購入できない' do
         @record_address.postal_code = '１２３-４５６７'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Postal code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@record_address.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it '都道府県に「---」が選択されていると購入できない' do
         @record_address.prefecture_id = 0
@@ -56,27 +57,27 @@ RSpec.describe RecordAddress, type: :model do
       it '電話番号が空では購入できない' do
         @record_address.tell = ''
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Tell can't be blank", "Tell is invalid. Input only number")
+        expect(@record_address.errors.full_messages).to include("Tell can't be blank", 'Tell is invalid. Input only number')
       end
       it '電話番号にハイフンが入っていては購入できない' do
         @record_address.tell = '090-1234-5678'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Tell is invalid. Input only number")
+        expect(@record_address.errors.full_messages).to include('Tell is invalid. Input only number')
       end
       it '電話番号が全角数字では購入できない' do
         @record_address.tell = '０８０１２３４５６７８'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Tell is invalid. Input only number")
+        expect(@record_address.errors.full_messages).to include('Tell is invalid. Input only number')
       end
       it '電話番号が9桁以下では購入できない' do
         @record_address.tell = '123456789'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Tell is invalid. Input only number")
+        expect(@record_address.errors.full_messages).to include('Tell is invalid. Input only number')
       end
       it '電話番号が12桁以上では購入できない' do
         @record_address.tell = '123456789012'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Tell is invalid. Input only number")
+        expect(@record_address.errors.full_messages).to include('Tell is invalid. Input only number')
       end
       it 'ユーザーが紐付いていなければ購入できない' do
         @record_address.user_id = nil
