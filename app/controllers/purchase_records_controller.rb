@@ -20,7 +20,7 @@ class PurchaseRecordsController < ApplicationController
   private
 
   def record_address_params
-    params.require(:record_address).permit(:tell, :postal_code, :prefecture_id, :municipalities, :address, :building).merge(
+    params.require(:record_address).permit(:postal_code, :prefecture_id, :municipalities, :address, :building, :tell).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
   end
