@@ -26,8 +26,7 @@ RSpec.describe RecordAddress, type: :model do
       it '郵便局番号が空では購入できない' do
         @record_address.postal_code = ''
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Postal code can't be blank",
-                                                                'Postal code is invalid. Enter it as follows (e.g. 123-4567)')
+        expect(@record_address.errors.full_messages).to include("Postal code can't be blank")
       end
       it '郵便番号にハイフンなしでは購入できない' do
         @record_address.postal_code = '1234567'
@@ -57,7 +56,7 @@ RSpec.describe RecordAddress, type: :model do
       it '電話番号が空では購入できない' do
         @record_address.tell = ''
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Tell can't be blank", 'Tell is invalid. Input only number')
+        expect(@record_address.errors.full_messages).to include("Tell can't be blank")
       end
       it '電話番号にハイフンが入っていては購入できない' do
         @record_address.tell = '090-1234-5678'
