@@ -55,9 +55,8 @@
 | municipalities  | string     | null, false                   |
 | address         | string     | null, false                   |
 | building        | string     |                               |
-| tell            | string     | null, false                   |
 | purchase_record | references | null, false, foreign_key: true|
-
+| tell            | string     | null, false                    |
 ### Association
 
 - belongs_to :purchase_record
